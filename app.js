@@ -17,23 +17,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// app.use((req, res, next) => {
-//   req.session.currentUser = {
-//     name : "Joe",
-//     nickname: "SuperJoe",
-//     email : "joe@joe.com",
-//     phone : "12",
-//     password :"multipass",
-//     rates : 2,
-//     _id: '6179280d72c4354791750fbf',
-//     skills : ["617929c9aa824a93bf7072ed",
-//   "61792a6f47ab974272eaebe1",
-// "61792c79ce26ab179839a215",
-// "61792e0887bf08eaf2fbe38c"]
-//   }
-//   next()
-// })
+// Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
+app.use((req, res, next) => {
+  req.session.currentUser = {
+    _id : "6192412705adb740285e3331",
+    profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
+    isFollowing : ["6192412705adb740285e3333", "6192412705adb740285e3334", "6192412705adb740285e3332"],
+    username: "Croustie",
+    email :"croustie@croustie.com",
+    password: "azerty",
+  }
+  next()
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
