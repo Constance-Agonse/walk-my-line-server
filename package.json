@@ -3,12 +3,33 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www nodemon ./configs/mongo.js",
+    "seed:tag": "node ./bin/seeds/seed.tag.js",
+    "seed:user": "node ./bin/seeds/seed.user.js",
+    "seed:pin": "node ./bin/seeds/seed.pin.js",
+    "seed:journey": "node ./bin/seeds/seed.journey.js",
+    "seed:all": "npm run seed:tag && npm run seed:user && npm run seed:pin && npm run seed:journey"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "morgan": "~1.9.1"
-  }
+    "cookie-parser": "^1.4.5",
+    "debug": "^2.6.9",
+    "dotenv": "^10.0.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.11.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.15"
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Constance-Agonse/walk-my-line-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Constance-Agonse/walk-my-line-server/issues"
+  },
+  "homepage": "https://github.com/Constance-Agonse/walk-my-line-server#readme",
+  "description": ""
 }

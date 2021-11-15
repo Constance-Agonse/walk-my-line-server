@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PinSchema = new Schema({
-  username: {
-    type: String,
-    require: true,
+  creator: {
+    type: Schema.Types.ObjectId,
+    // require: true,
   },
   title: {
     type: String,
@@ -35,8 +35,6 @@ const PinSchema = new Schema({
     },
 
 }
-// , { timestamps: true }
-
 );
 
 const pinModel = mongoose.model("Pin", PinSchema);

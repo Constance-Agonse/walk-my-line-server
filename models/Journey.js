@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const JourneySchema = new.mongoose.Schema({
+const JourneySchema = new Schema({
   isPublic: {
     type: Boolean,
     default: false,
@@ -13,13 +14,10 @@ const JourneySchema = new.mongoose.Schema({
     type: Schema.Types.ObjectId,
     ref: "pin"
   }],
-
-
   creator: {
     type: Schema.Types.ObjectId,
     ref: "user"
   },
-
   journeyTime: {
     type: Number,
     min: 0,
@@ -40,12 +38,15 @@ const JourneySchema = new.mongoose.Schema({
     default: 0,
   },
   
-  latIntial: {
+  latInitial: {
     type: Number
   },
-  longIntial: {
+  longInitial: {
     type: Number
-  } // A GERER PLUS TARD DANS LE CODE LORS DE LA CREATION D'UN TRAJET
+  }, // A GERER PLUS TARD DANS LE CODE LORS DE LA CREATION D'UN TRAJET
+  geometry: {
+    type: [[Number]],
+  },
 },
 
 );
