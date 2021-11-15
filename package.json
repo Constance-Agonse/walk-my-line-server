@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "dev": "nodemon ./bin/www",
     "start": "node ./bin/www nodemon ./configs/mongo.js",
     "seed:tag": "node ./bin/seeds/seed.tag.js",
     "seed:user": "node ./bin/seeds/seed.user.js",
@@ -11,16 +12,20 @@
     "seed:all": "npm run seed:tag && npm run seed:user && npm run seed:pin && npm run seed:journey"
   },
   "dependencies": {
+    "cloudinary": "^1.27.1",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "debug": "^2.6.9",
     "dotenv": "^10.0.0",
     "express": "^4.16.4",
+    "express-session": "^1.17.2",
     "mongoose": "^5.11.4",
     "morgan": "^1.9.1",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^2.0.15"
   },
   "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Constance-Agonse/walk-my-line-server.git"
