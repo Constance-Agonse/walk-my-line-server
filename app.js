@@ -11,6 +11,7 @@ const cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pinsRouter = require("./routes/pins");
+var authRouter = require ("./routes/auth.js");
 
 var app = express();
 
@@ -52,9 +53,14 @@ app.use((req, res, next) => {
   next()
 })
 
+
+
+app.use('/auth', authRouter);
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
+
 
 module.exports = app;
 

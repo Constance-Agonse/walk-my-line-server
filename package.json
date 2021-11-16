@@ -12,6 +12,7 @@
     "seed:all": "npm run seed:tag && npm run seed:user && npm run seed:pin && npm run seed:journey"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.1",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
@@ -23,7 +24,8 @@
     "morgan": "^1.9.1",
     "multer": "^1.4.3",
     "multer-storage-cloudinary": "^4.0.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "passport": "^0.5.0"
   },
   "main": "app.js",
   "repository": {
