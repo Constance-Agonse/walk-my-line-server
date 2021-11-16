@@ -8,15 +8,15 @@ const JourneySchema = new Schema({
   },
   tags: [{
     type: Schema.Types.ObjectId,
-    ref: "tag"
+    ref: "Tag"
   }],
   pins: [{
     type: Schema.Types.ObjectId,
-    ref: "pin"
+    ref: "Pin"
   }],
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "user"
+    ref: "User"
   },
   journeyTime: {
     type: Number,
@@ -30,7 +30,7 @@ const JourneySchema = new Schema({
 
   isLikedBy: [{
     type: Schema.Types.ObjectId,
-    ref: "user"
+    ref: "User"
   }],
 
   rate: {
