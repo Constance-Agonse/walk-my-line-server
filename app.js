@@ -11,9 +11,10 @@ const cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var profileRouter = require("./routes/profile");
-
 var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
+// var journeyRouter = require ("./routes/journey");
+
 
 var app = express();
 
@@ -62,8 +63,8 @@ app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
-
 app.use("/profile", profileRouter);
+// app.use("/journey", journeyRouter);
 
 
 
