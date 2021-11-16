@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+<<<<<<< HEAD
 // const User = require("./../models/User");
 const Journey = require("./../models/Journey");
 
@@ -55,3 +56,14 @@ router.get("/", async (req, res, next) => {
 //     }
 // })
 module.exports = router;
+=======
+
+// router.get("/:id", async (req, res, next) => {
+//     try {
+        
+//       res.status(200).json(result); //, users
+//     } catch (err) {
+//       next(err);
+//     }
+//   });
+>>>>>>> 550854bd6dda9ba00cd762bc9d7d4b509b9d848c

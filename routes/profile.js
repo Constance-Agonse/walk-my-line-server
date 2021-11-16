@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require("./../models/User");
 const Journey = require("./../models/Journey");
+const Tag = require("./../models/Tag");
+const Pin = require("./../models/Pin");
+
+
 
 
 // const uploader = require("./../configs/cloudinary");
@@ -21,13 +25,23 @@ router.get("/", async (req, res, next) => {
       //   }
       // });
       const user = await User.findById(req.session.currentUser._id);
-      const journiesCreateByUser = await Journey.find({creator : req.session.currentUser._id}).populate('creator')
-      const journiesFollowedByUser = await Journey.find({isLikedBy : req.session.currentUser._id}).populate('isLikedBy') //{_id : req.session.currentUser._id}
+
+      const journiesCreateByUser = await Journey.find({creator : req.session.currentUser._id})
+      .populate('creator')
+      .populate('tags')
+      .populate('pins')
+
+      const journiesFollowedByUser = await Journey.find({isLikedBy : req.session.currentUser._id})
+      .populate('isLikedBy') //{_id : req.session.currentUser._id}
+      .populate('tags')
+      .populate('pins')
+      .populate('creator')
+
 
       // {isLikedBy :61937ba28e80564ca0a670dc}
 
       const result = [users,user,journiesCreateByUser, journiesFollowedByUser] //,journies
-      console.log("journiesFollowedByUser>>>",journiesFollowedByUser)
+      console.log("journiesFollowedByUser>>>", journiesFollowedByUser)
       res.status(200).json(result); //, users
     } catch (err) {
       next(err);
