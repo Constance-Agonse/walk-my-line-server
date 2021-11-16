@@ -72,18 +72,35 @@ const journies = [
         User.findOne({ username: "James Cook" }),
         User.findOne({ username: "Christophe Colomb" }),
         User.findOne({ username: "Marco Polo" }),
+        User.findOne({ username: "Croustie" }),
+
     ]);
 
+    let count = 0;
+    let creatorNumber = 3;
     //On assigne à l'array isFollowing les user que le user[0] follow
     // Ici on lui en assigne 3 (pour John Doe)
     for (let journey of insertedJournies) {
         journey.tags = [tags[0]._id, tags[1]._id,tags[2]._id]; //on ajoute l'id pour l'instant ce qui signifie qu'on devra populate. Il serait peut etre plus judicieux de mettre directement le nom
-        journey.isLikedBy = [users[0]._id, users[1]._id, users[2]._id];
+        journey.isLikedBy = [users[0]._id, users[1]._id, users[3]._id];
         journey.pins = [pins[0]._id, pins[1]._id, pins[2]._id];
+        (count % 2 === 0) ? (creatorNumber = 3):(creatorNumber = 2);
+        count++;
+        journey.creator = users[creatorNumber]._id;
+
         await Journey.findByIdAndUpdate(journey._id, journey);
     }
 
     console.log("yatou?")
+
+
+
+// on créée deux creation pour croustie et une marco polo
+// journies[0].creator = users[3]._id;
+// journies[1].creator = users[3]._id;
+// journies[2].creator = users[2]._id;
+    // await Journey.insertMany(journies);
+
 
     const finalBatch = await Journey.find();
 

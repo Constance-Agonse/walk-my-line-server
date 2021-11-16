@@ -10,6 +10,8 @@ const cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var profileRouter = require("./routes/profile");
+
 var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
 
@@ -43,9 +45,9 @@ app.use(session({
 // Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
 app.use((req, res, next) => {
   req.session.currentUser = {
-    _id : "6192412705adb740285e3331",
+    _id : "61939315c511cf34f4062a40",
     profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
-    isFollowing : ["6192412705adb740285e3333", "6192412705adb740285e3334", "6192412705adb740285e3332"],
+    isFollowing : [],
     username: "Croustie",
     email :"croustie@croustie.com",
     password: "azerty",
@@ -60,6 +62,10 @@ app.use('/auth', authRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
+
+app.use("/profile", profileRouter);
+
+
 
 
 module.exports = app;

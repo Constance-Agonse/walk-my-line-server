@@ -6,7 +6,6 @@ const User = require("./../../models/User");
 
 const pins = [
     {
-      creator: undefined,
       title: "Eiffel Tower",
       rating: 5,
       lat: 2.3131166788984387,
@@ -16,7 +15,6 @@ const pins = [
       genre: "image",
     },
     {
-        creator: undefined,
         title: "Bertillon",
         rating: 4,
         lat: 2.3131166788984387,
@@ -26,7 +24,6 @@ const pins = [
         genre: "image",
       },
       {
-        creator: undefined,
         title: "IronHack",
         rating: 5,
         lat: 3.3131166788984387,
@@ -42,18 +39,18 @@ const pins = [
       // await Journey.deleteMany(); // empty the album db collection
       await Pin.deleteMany(); // empty the album db collection
   
-      //On trouve des user que l'on stocke dans creator pour pouvoir l'exploiter ensuite
-      const creator = await Promise.all([
-        User.findOne({ username: "James Cook" }),
-        User.findOne({ username: "Christophe Colomb" }),
-        User.findOne({ username: "John Doe" }),
-      ]);
+      // //On trouve des user que l'on stocke dans creator pour pouvoir l'exploiter ensuite
+      // const creator = await Promise.all([
+      //   User.findOne({ username: "James Cook" }),
+      //   User.findOne({ username: "Christophe Colomb" }),
+      //   User.findOne({ username: "John Doe" }),
+      // ]);
   
-      //On assigne à l'array isFollowing les user que le user[0] follow
-      //on assigne au premier pin un creator qui sera le premier de l'array creator soit james cook
-      pins[0].creator = creator[0]._id;   
-      pins[1].creator = creator[1]._id;
-      pins[2].creator = creator[2]._id;
+      // //On assigne à l'array isFollowing les user que le user[0] follow
+      // //on assigne au premier pin un creator qui sera le premier de l'array creator soit james cook
+      // pins[0].creator = creator[0]._id;   
+      // pins[1].creator = creator[1]._id;
+      // pins[2].creator = creator[2]._id;
 
 
   

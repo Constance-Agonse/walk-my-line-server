@@ -2,10 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PinSchema = new Schema({
-  creator: {
-    type: Schema.Types.ObjectId,
-    // require: true,
-  },
   title: {
     type: String,
   },
