@@ -48,7 +48,16 @@ router.get("/", async (req, res, next) => {
     }
   });
 
-
+  router.delete('/:id', async (req, res, next) => {
+    console.log('before route delete')
+    try{
+      console.log('in route delete')
+      const deletedJourney = await Journey.findByIdAndDelete(req.params.id);
+      res.status(200).json(deletedJourney);
+    } catch (err) {
+      next(err);
+    }
+  })
 
 // router.get('/',protectRoute, async (req,res,next) => {
 
@@ -65,5 +74,5 @@ router.get("/", async (req, res, next) => {
 //     } catch (err) {
 //         next(err);
 //     }
-// })
+// })@
 module.exports = router;

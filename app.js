@@ -46,7 +46,7 @@ app.use(session({
 // Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
 app.use((req, res, next) => {
   req.session.currentUser = {
-    _id : "6194119fa1b355d790a9923b",
+    _id : "6194bd5fa7c26fef091f73e3",
     profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
     isFollowing : [],
     username: "Croustie",
