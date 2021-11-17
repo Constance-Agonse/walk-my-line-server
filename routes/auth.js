@@ -19,11 +19,14 @@ const minPasswordLength = 4;
 // more on HTTP status
 // https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
-router.post("/signup", uploader.single("avatar"), (req, res, next) => {
+router.post("/signup", uploader.single("profilePic"), (req, res, next) => {
   // console.log("file ?", req.file);
   // console.log(req.body);
   let errorMsg = "";
+
+  console.log("heyyyyy")
   const { username, password, email } = req.body;
+  // const { profilePic } = req.file;
   // @todo : best if email validation here or check with a regex in the User model
   if (!password || !email) errorMsg += "Provide email and password.\n";
 
@@ -40,10 +43,17 @@ router.post("/signup", uploader.single("avatar"), (req, res, next) => {
     username,
     email,
     password: hashPass,
+    // profilePic,
   };
+  newUser.profilePic= null;
+  
+ console.log('>>>>>>>>', req.file)
+  // check if an profilePic FILE has been posted
+  if (req.file) newUser.profilePic = req.file.secure_url;
 
-  // check if an avatar FILE has been posted
-  if (req.file) newUser.avatar = req.file.secure_url;
+ 
+console.log("req")
+
 
   userModel
     .create(newUser)
@@ -74,7 +84,7 @@ router.post("/signin", (req, res, next) => {
       // You may find usefull to send some other infos
       // dont send sensitive informations back to the client
       // let's choose the exposed user below
-      const { _id, username, email, favorites, avatar, role } = user;
+      const { _id, username, email, favorites, profilePic, role } = user;
       // and only expose non-sensitive inofrmations to the client's state
       next(
         res.status(200).json({
@@ -82,7 +92,7 @@ router.post("/signin", (req, res, next) => {
             _id,
             username,
             email,
-            avatar,
+            profilePic,
             role,
             favorites,
           },
@@ -98,15 +108,16 @@ router.post("/signout", (req, res, next) => {
 });
 
 router.use("/is-loggedin", (req, res, next) => {
+  console.log('heyhi')
   if (req.isAuthenticated()) {
     // method provided by passport
-    const { _id, username, email, avatar, role } = req.user;
+    const { _id, username, email, profilePic, role } = req.user;
     return res.status(200).json({
       currentUser: {
         _id,
         username,
         email,
-        avatar,
+        profilePic,
         role,
       },
     });
