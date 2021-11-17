@@ -48,6 +48,7 @@ router.get("/", async (req, res, next) => {
     }
   });
 
+  
   router.delete('/:id', async (req, res, next) => {
     console.log('before route delete')
     try{
@@ -58,6 +59,8 @@ router.get("/", async (req, res, next) => {
       next(err);
     }
   })
+
+
 
 // router.get('/',protectRoute, async (req,res,next) => {
 
