@@ -10,6 +10,7 @@ const Pin = require("./../models/Pin");
 
 const uploader = require("./../configs/cloudinary");
 
+
 //READ
 router.get("/", async (req, res, next) => {
     try {
