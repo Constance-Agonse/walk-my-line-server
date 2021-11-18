@@ -46,7 +46,7 @@ router.post("/signup", uploader.single("profilePic"), (req, res, next) => {
     // profilePic,
   };
   newUser.profilePic= null;
-  
+
  console.log('>>>>>>>>', req.file)
   // check if an profilePic FILE has been posted
   if (req.file) newUser.profilePic = req.file.secure_url;
@@ -84,20 +84,19 @@ router.post("/signin", (req, res, next) => {
       // You may find usefull to send some other infos
       // dont send sensitive informations back to the client
       // let's choose the exposed user below
-      const { _id, username, email, favorites, profilePic, role } = user;
+      const { _id, username, email, profilePic, isFollowing } = user;
       // and only expose non-sensitive inofrmations to the client's state
-      next(
+    
         res.status(200).json({
           currentUser: {
             _id,
             username,
             email,
             profilePic,
-            role,
-            favorites,
+             isFollowing,
           },
         })
-      );
+      ;
     });
   })(req, res, next); // IIFE (module) pattern here (see passport documentation)
 });
@@ -111,14 +110,14 @@ router.use("/is-loggedin", (req, res, next) => {
   console.log('heyhi')
   if (req.isAuthenticated()) {
     // method provided by passport
-    const { _id, username, email, profilePic, role } = req.user;
+    const { _id, username, email, profilePic, isFollowing } = req.user;
     return res.status(200).json({
       currentUser: {
         _id,
         username,
         email,
         profilePic,
-        role,
+        isFollowing,
       },
     });
   }
