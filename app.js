@@ -15,6 +15,8 @@ var usersRouter = require('./routes/users');
 var profileRouter = require("./routes/profile");
 var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
+var createJourney = require ("./routes/createJourney.js");
+
 // var journeyRouter = require ("./routes/journey");
 
 const _DEVMODE = false;
@@ -53,7 +55,7 @@ app.use(passport.session());
 // Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
 app.use((req, res, next) => {
   req.session.currentUser = {
-    _id : "6193eddd3ad9955f64c22730",
+    _id : "61967029042d717b00ab24bd",
     profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
     isFollowing : [],
     username: "Croustie",
@@ -71,6 +73,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
 app.use("/profile", profileRouter);
+app.use("/createSearchJourney", createJourney);
+
 // app.use("/journey", journeyRouter);
 
 

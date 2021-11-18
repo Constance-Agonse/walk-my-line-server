@@ -7,16 +7,34 @@ const uploader = require("./../configs/cloudinary");
 // https://docs.microsoft.com/fr-fr/azure/architecture/best-practices/api-design
 
 // CREATE
-router.post("/", uploader.single("media"), async (req, res, next) => {
+// router.post("/", uploader.single("media"), async (req, res, next) => {
+//   console.log("req.file");
+  
+//   console.log(req.file);
+//   try {
+//     const newPin = await PinModel.create({ ...req.body, media: req.file.path }); //  req.file.path  => provided by cloudinary's response
+//     res.status(201).json(newPin);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+router.post("/", async (req, res, next) => {
+  console.log("req.file");
+  
   console.log(req.file);
+  console.log('-----------------------');
+
+  console.log(req.body.title);
+  // .body
+  console.log('-----------------------');
+
   try {
-    const newPin = await PinModel.create({ ...req.body, media: req.file.path }); //  req.file.path  => provided by cloudinary's response
+    const newPin = await PinModel.create({ ...req.body }); //  req.file.path  => provided by cloudinary's response
     res.status(201).json(newPin);
   } catch (err) {
     next(err);
   }
 });
-
 // READ
 
 router.get("/", async (req, res, next) => {

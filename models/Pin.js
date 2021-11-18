@@ -5,20 +5,14 @@ const PinSchema = new Schema({
   title: {
     type: String,
   },
-  // rating: {
-  //   type: Number,
-  //   require: true,
-  //   min: 0,
-  //   max: 5
-  // },
-  // lat: {
-  //   type: Number, 
-  //   require: true,
-  // },
-  // long: {
-  //   type: Number, 
-  //   require: true,
-  // },
+  lat: {
+    type: Number, 
+    require: true,
+  },
+  long: {
+    type: Number, 
+    require: true,
+  },
   description: {
     type: String,
   },

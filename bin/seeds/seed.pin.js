@@ -7,7 +7,6 @@ const User = require("./../../models/User");
 const pins = [
     {
       title: "Eiffel Tower",
-      rating: 5,
       lat: 2.3131166788984387,
       long: 48.854772508530175,
       description : "Wow... That's big...",
@@ -16,7 +15,6 @@ const pins = [
     },
     {
         title: "Bertillon",
-        rating: 4,
         lat: 2.3131166788984387,
         long: 50.854772508530175,
         description : "Humm winter iceCream are the best",
@@ -25,7 +23,6 @@ const pins = [
       },
       {
         title: "IronHack",
-        rating: 5,
         lat: 3.3131166788984387,
         long: 47.854772508530175,
         description : "IRONBEEEEERSSS",
