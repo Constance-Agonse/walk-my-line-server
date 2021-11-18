@@ -22,10 +22,11 @@ const _DEVMODE = false;
 var app = express();
 
 app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public/build")));
 
 
 
@@ -72,7 +73,17 @@ app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
 app.use("/profile", profileRouter);
 // app.use("/journey", journeyRouter);
-
+app.use("/api/*", (req, res, next) => {  
+  const error = new Error("Ressource not found.");
+  error.status = 404;
+  next(error);
+});
+if (process.env.NODE_ENV === "production") {
+  app.use("*", (req, res, next) => {
+    // If no routes match, send them the React HTML.
+    res.sendFile(path.join(__dirname, "public/build/index.html"));
+  });
+}
 
 
 
