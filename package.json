@@ -39,5 +39,8 @@
     "url": "https://github.com/Constance-Agonse/walk-my-line-server/issues"
   },
   "homepage": "https://github.com/Constance-Agonse/walk-my-line-server#readme",
-  "description": ""
+  "description": "",
+  "engines": {
+    "node": "16.11.0"
+  }
 }

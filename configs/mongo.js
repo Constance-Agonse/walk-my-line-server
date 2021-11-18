@@ -2,6 +2,7 @@ const express = require ("express");
 const mongoose = require ("mongoose");
 const app = express ();
 const dotenv = require ("dotenv");
+require('dotenv').config();
 // const pinRoute = require ('./routes/pin');
 
 dotenv.config();
@@ -9,10 +10,17 @@ dotenv.config();
 app.use(express.json())
 
 mongoose
-.connect("mongodb://localhost/walk-my-line", {useNewUrlParser: true,
-useUnifiedTopology: true})
-.then(() => {console.log('MONGODBCONNECTED bien ouej frero')})
-.catch((err) =>  console.log('erreur ',err));
+  .connect(
+    process.env.MONGODB_URI,            //  <--- UPDATE
+    {
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    }
+	)
+  .then((x) => console.log('Connected to the DB'))
+  .catch(err => console.error('Error while connecting to DB', err));
 
 // //zone de préfixage
 
