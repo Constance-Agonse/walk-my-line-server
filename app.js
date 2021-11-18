@@ -52,7 +52,7 @@ app.use(passport.session());
 // Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
 app.use((req, res, next) => {
   req.session.currentUser = {
-    _id : "6194ffbb534b1210112e7649",
+    _id : "6193eddd3ad9955f64c22730",
     profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
     isFollowing : [],
     username: "Croustie",
