@@ -17,6 +17,7 @@ var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
 // var journeyRouter = require ("./routes/journey");
 
+const _DEVMODE = false;
 
 var app = express();
 
