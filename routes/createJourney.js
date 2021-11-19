@@ -9,7 +9,7 @@ const uploader = require("./../configs/cloudinary");
 
 router.get("/", async (req, res, next) => {
     try {
-      const userId = await User.findById(req.session.currentUser._id);
+      const userId = await User.findById(req.session.passport.user);
 
       console.log("journiesFollowedByUser>>>", userId)
       res.status(200).json(userId); 

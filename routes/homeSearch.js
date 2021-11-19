@@ -8,11 +8,11 @@ const Pin = require("./../models/Pin");
 router.get("/", async (req, res, next) => {
     try {
 
-      const journiesCreateByUser = await Journey.find()
-      .populate('pins')
+      const journies = await Journey.find()
+    //   .populate('pins')
 
-      console.log("journiesFollowedByUser>>>", journiesCreateByUser)
-      res.status(200).json(journiesCreateByUser); //, users
+      console.log("journiesFollowedByUser>>>", journies)
+      res.status(200).json(journies); //, users
     } catch (err) {
       next(err);
     }
