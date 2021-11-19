@@ -5,9 +5,6 @@ const Journey = require("./../models/Journey");
 const Tag = require("./../models/Tag");
 const Pin = require("./../models/Pin");
 
-
-
-
 const uploader = require("./../configs/cloudinary");
 
 

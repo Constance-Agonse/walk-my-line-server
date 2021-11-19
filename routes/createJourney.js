@@ -24,6 +24,9 @@ router.get("/", async (req, res, next) => {
     console.log(req.body);
     try {
       const newJourney = await Journey.create({ ...req.body }); //  req.file.path  => provided by cloudinary's response
+      console.log("newJourney >>>>>")
+      
+      console.log(newJourney)
       res.status(201).json(newJourney);
     } catch (err) {
       next(err);
