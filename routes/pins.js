@@ -7,38 +7,40 @@ const uploader = require("./../configs/cloudinary");
 // https://docs.microsoft.com/fr-fr/azure/architecture/best-practices/api-design
 
 // CREATE
-// router.post("/", uploader.single("media"), async (req, res, next) => {
-//   console.log("req.file");
-  
-//   console.log(req.file);
-//   try {
-//     const newPin = await PinModel.create({ ...req.body, media: req.file.path }); //  req.file.path  => provided by cloudinary's response
-//     res.status(201).json(newPin);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-router.post("/", async (req, res, next) => {
+router.post("/", uploader.single("media"), async (req, res, next) => {
   console.log("req.file");
   
   console.log(req.file);
-  console.log('-----------------------');
-
-  console.log(req.body);
-  // .body
-  console.log('-----------------------');
-
   try {
-    const newPin = await PinModel.create({ ...req.body }); //  req.file.path  => provided by cloudinary's response
-    console.log("newPin >>>>")
-    
-    console.log(newPin)
-    res.status(202).json(newPin); // A qui va la requete json ? on renvoie pour qui?
-    
+    const newPin = await PinModel.create({ ...req.body, media: req.file.path }); //  req.file.path  => provided by cloudinary's response
+    console.log("newPin ********")
+     
+    res.status(201).json(newPin._id);
   } catch (err) {
     next(err);
   }
 });
+// router.post("/", async (req, res, next) => {
+//   console.log("req.file");
+  
+//   console.log(req.file);
+//   console.log('-----------------------');
+
+//   console.log(req.body);
+//   // .body
+//   console.log('-----------------------');
+
+//   try {
+//     const newPin = await PinModel.create({ ...req.body }); //  req.file.path  => provided by cloudinary's response
+//     console.log("newPin >>>>")
+    
+//     console.log(newPin)
+//     res.status(202).json(newPin); // A qui va la requete json ? on renvoie pour qui?
+    
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 // READ
 
 router.get("/", async (req, res, next) => {
