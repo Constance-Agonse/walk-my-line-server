@@ -16,6 +16,8 @@ var profileRouter = require("./routes/profile");
 var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
 var createJourney = require ("./routes/createJourney.js");
+var homeSearch = require ("./routes/homeSearch.js");
+
 
 // var journeyRouter = require ("./routes/journey");
 
@@ -54,17 +56,17 @@ app.use(session({
 
 app.use(passport.session());
 // Initialisation d'un user permanent son id doit être modifié quand on seed à nouveau
-app.use((req, res, next) => {
-  req.session.currentUser = {
-    _id : "61967029042d717b00ab24bd",
-    profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
-    isFollowing : [],
-    username: "Croustie",
-    email :"croustie@croustie.com",
-    password: "azerty",
-  }
-  next()
-})
+// app.use((req, res, next) => {
+//   req.session.currentUser = {
+//     _id : "61967029042d717b00ab24bd",
+//     profilePic: "http://images6.fanpop.com/image/photos/39000000/Cool-Dog-animals-39056074-1600-900.jpg",
+//     isFollowing : [],
+//     username: "Croustie",
+//     email :"croustie@croustie.com",
+//     password: "azerty",
+//   }
+//   next()
+// })
 
 
 
@@ -75,6 +77,7 @@ app.use('/users', usersRouter);
 app.use("/api/pins", pinsRouter);
 app.use("/profile", profileRouter);
 app.use("/createSearchJourney", createJourney);
+app.use("/homeSearch", homeSearch);
 
 // app.use("/journey", journeyRouter);
 app.use("/api/*", (req, res, next) => {  

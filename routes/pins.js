@@ -24,13 +24,17 @@ router.post("/", async (req, res, next) => {
   console.log(req.file);
   console.log('-----------------------');
 
-  console.log(req.body.title);
+  console.log(req.body);
   // .body
   console.log('-----------------------');
 
   try {
     const newPin = await PinModel.create({ ...req.body }); //  req.file.path  => provided by cloudinary's response
-    res.status(201).json(newPin);
+    console.log("newPin >>>>")
+    
+    console.log(newPin)
+    res.status(202).json(newPin); // A qui va la requete json ? on renvoie pour qui?
+    
   } catch (err) {
     next(err);
   }

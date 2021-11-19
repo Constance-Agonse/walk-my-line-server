@@ -6,14 +6,19 @@ const JourneySchema = new Schema({
     type: Boolean,
     default: false,
   },
-  tags: [{
-    type: Schema.Types.ObjectId,
-    ref: "Tag"
-  }],
+  // tags: [{
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Tag"
+  // }],
+  //Changement on les rentres en dur direct ici
+  tags: {
+    type: [String],
+  },
   pins: [{
     type: Schema.Types.ObjectId,
     ref: "Pin"
   }],
+  // walk: [],
   creator: {
     type: Schema.Types.ObjectId,
     ref: "User"
@@ -45,7 +50,7 @@ const JourneySchema = new Schema({
     type: Number
   }, // A GERER PLUS TARD DANS LE CODE LORS DE LA CREATION D'UN TRAJET
   geometry: {
-    type: [[Number]],
+    type: [[[Number]]],// [[,],[,]]
   },
 },
 

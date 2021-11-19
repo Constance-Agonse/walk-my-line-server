@@ -9,7 +9,7 @@
     "seed:user": "node ./bin/seeds/seed.user.js",
     "seed:pin": "node ./bin/seeds/seed.pin.js",
     "seed:journey": "node ./bin/seeds/seed.journey.js",
-    "seed:all": "npm run seed:tag && npm run seed:user && npm run seed:pin && npm run seed:journey"
+    "seed:all": "npm run seed:user && npm run seed:pin && npm run seed:journey"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

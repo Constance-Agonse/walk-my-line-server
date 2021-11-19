@@ -16,8 +16,8 @@ const journies = [
     km: 42,
     isLikedBy: [],
     rate: 3,
-    latInitial: 48.854772508530175,
-    longInitial: 2.3131166788984387,
+    latInitial: 40.854772508530175,
+    longInitial: 1.3131166788984387,
     geometry: [ [2.32964, 48.854712], [2.33047, 48.854466], [2.331069, 48.854337], [2.331109, 48.854257]]
   },
   {
@@ -29,7 +29,7 @@ const journies = [
     km: 42,
     isLikedBy: [],
     rate: 3,
-    latInitial: 47.854772508530175,
+    latInitial: 45.854772508530175,
     longInitial: 2.3131166788984387,
     geometry: [ [2.32964, 48.854712], [2.33047, 48.854466], [2.331069, 48.854337], [2.331109, 48.854257]]
   },
@@ -43,7 +43,7 @@ const journies = [
     isLikedBy: [],
     rate: 3,
     latInitial: 49.854772508530175,
-    longInitial: 3.3131166788984387,
+    longInitial: 6.3131166788984387,
     geometry: [ [2.32964, 48.854712], [2.33047, 48.854466], [2.331069, 48.854337], [2.331109, 48.854257]]
   },
 ];
@@ -55,12 +55,13 @@ const journies = [
     const insertedJournies = await Journey.insertMany(journies); // insert docs in db
 
     //On trouve des user que l'on stocke dans isFollowing pour pouvoir l'exploiter ensuite
-    const tags = await Promise.all([
-      Tag.findOne({ name: "#architecture" }),
-      Tag.findOne({ name: "#iceCream" }),
-      Tag.findOne({ name: "#secretPassage" }),
-      Tag.findOne({ name: "#historicMonument" }),
-    ]);
+    // const tags = await Promise.all([
+    //   Tag.findOne({ name: "#architecture" }),
+    //   Tag.findOne({ name: "#iceCream" }),
+    //   Tag.findOne({ name: "#secretPassage" }),
+    //   Tag.findOne({ name: "#historicMonument" }),
+    // ]);
+    //ON ENLEVE LES TAGS QUE L4ON RENTRE EN DUR MAINTENANT donc j'enleve aussi du seed:all(=> npm run seed:tag &&
 
     const pins = await Promise.all([
         Pin.findOne({ title: "Eiffel Tower" }),
@@ -81,7 +82,7 @@ const journies = [
     //On assigne à l'array isFollowing les user que le user[0] follow
     // Ici on lui en assigne 3 (pour John Doe)
     for (let journey of insertedJournies) {
-        journey.tags = [tags[0]._id, tags[1]._id,tags[2]._id]; //on ajoute l'id pour l'instant ce qui signifie qu'on devra populate. Il serait peut etre plus judicieux de mettre directement le nom
+        // journey.tags = [tags[0]._id, tags[1]._id,tags[2]._id]; //on ajoute l'id pour l'instant ce qui signifie qu'on devra populate. Il serait peut etre plus judicieux de mettre directement le nom
         journey.isLikedBy = [users[0]._id, users[1]._id, users[3]._id];
         journey.pins = [pins[0]._id, pins[1]._id, pins[2]._id];
         (count % 2 === 0) ? (creatorNumber = 3):(creatorNumber = 2);
