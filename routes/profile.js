@@ -25,18 +25,23 @@ router.get("/", async (req, res, next) => {
       //     path : 'style',
       //   }
       // });
+      console.log("---------------->")
+
+      console.log(req.session)
       const user = await User.findById(req.session.currentUser._id);
 
       const journiesCreateByUser = await Journey.find({creator : req.session.currentUser._id})
       .populate('creator')
-      .populate('tags')
       .populate('pins')
+      // .populate('tags')
+
 
       const journiesFollowedByUser = await Journey.find({isLikedBy : req.session.currentUser._id})
       .populate('isLikedBy') //{_id : req.session.currentUser._id}
-      .populate('tags')
       .populate('pins')
       .populate('creator')
+      // .populate('tags')
+
 
 
       // {isLikedBy :61937ba28e80564ca0a670dc}

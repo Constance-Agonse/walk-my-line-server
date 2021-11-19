@@ -23,10 +23,10 @@ const PinSchema = new Schema({
       type: String,
       enum: ["video", "vocal", "image", "text"]
     },
-  media: String,
-
-}
-);
+  media: {
+    type: String,
+  }
+});
 
 const pinModel = mongoose.model("Pin", PinSchema);
 

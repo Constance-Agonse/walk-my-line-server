@@ -107,7 +107,6 @@ router.post("/signout", (req, res, next) => {
 });
 
 router.use("/is-loggedin", (req, res, next) => {
-  console.log('heyhi')
   if (req.isAuthenticated()) {
     // method provided by passport
     const { _id, username, email, profilePic, isFollowing } = req.user;
