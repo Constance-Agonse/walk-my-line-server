@@ -17,7 +17,7 @@ var pinsRouter = require("./routes/pins");
 var authRouter = require ("./routes/auth.js");
 var createJourney = require ("./routes/createJourney.js");
 var homeSearch = require ("./routes/homeSearch.js");
-
+var journey = require("./routes/journey.js")
 
 // var journeyRouter = require ("./routes/journey");
 
@@ -48,7 +48,7 @@ app.use(passport.initialize());
 app.use(session({
   secret: process.env.SESSION_SECRET,
   cookie: {
-    maxAge: 1000* 60*60 * 4
+    maxAge:  1000* 60*60 * 4
   },
   resave: true,
   saveUninitialized: true
@@ -78,6 +78,8 @@ app.use("/api/pins", pinsRouter);
 app.use("/profile", profileRouter);
 app.use("/createSearchJourney", createJourney);
 app.use("/homeSearch", homeSearch);
+app.use("/journey", journey);
+
 
 // app.use("/journey", journeyRouter);
 app.use("/api/*", (req, res, next) => {  

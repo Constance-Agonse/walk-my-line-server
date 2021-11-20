@@ -103,6 +103,7 @@ router.post("/signin", (req, res, next) => {
 
 router.post("/signout", (req, res, next) => {
   req.logout(); // utility function provided by passport
+  console.log("log out server")
   res.status(200).json({ message: "Successfully logged out" });
 });
 
