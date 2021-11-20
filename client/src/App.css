@@ -1,0 +1,44 @@
+@import './styles/reset.css';
+
+@font-face {
+  font-family: Satoshi;
+  src: url('./fonts/Satoshi-Light.otf');
+}
+
+@font-face {
+  font-family: Neco;
+  src: url('./fonts/Neco-Regular.otf');
+}
+@font-face {
+  font-family: Boska;
+  src: url('./fonts/Boska-Medium.otf');
+}
+@font-face {
+  font-family: BoskaBlack;
+  src: url('./fonts/Boska-Black.otf');
+}
+
+:root {
+  --vert: #618469;
+  --beige: #FEF1E0;
+  --brown: #955E44;
+  --lightbrown: #DFD0C9;
+  --beigetresclair: #faf5f0;
+}
+
+.App {
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Satoshi;
+}
+
+.is-hidden {
+  display: none;
+}
+
+
+
+
+
+
