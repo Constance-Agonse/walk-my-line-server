@@ -9,8 +9,7 @@
     "seed:user": "node ./bin/seeds/seed.user.js",
     "seed:pin": "node ./bin/seeds/seed.pin.js",
     "seed:journey": "node ./bin/seeds/seed.journey.js",
-    "seed:all": "npm run seed:user && npm run seed:pin && npm run seed:journey",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "seed:all": "npm run seed:user && npm run seed:pin && npm run seed:journey"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
