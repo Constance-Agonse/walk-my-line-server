@@ -83,11 +83,17 @@ const journies = [
     // Ici on lui en assigne 3 (pour John Doe)
     for (let journey of insertedJournies) {
         // journey.tags = [tags[0]._id, tags[1]._id,tags[2]._id]; //on ajoute l'id pour l'instant ce qui signifie qu'on devra populate. Il serait peut etre plus judicieux de mettre directement le nom
-        journey.isLikedBy = [users[0]._id, users[1]._id, users[3]._id];
+        journey.isLikedBy = [users[0], users[1], users[3]];
+        console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",journey.isLikedBy)
+        
+        console.log(users[0])
         journey.pins = [pins[0]._id, pins[1]._id, pins[2]._id];
         (count % 2 === 0) ? (creatorNumber = 3):(creatorNumber = 2);
         count++;
-        journey.creator = users[creatorNumber]._id;
+        journey.creator = users[creatorNumber];
+    console.log("journey here>>>>>")
+    console.log(journey)
+
 
         await Journey.findByIdAndUpdate(journey._id, journey);
     }
