@@ -42,7 +42,9 @@ const JourneySchema = new Schema({
     type: Number,
     default: 0,
   },
-  
+  name: {
+    type: String,
+  },
   latInitial: {
     type: Number
   },
